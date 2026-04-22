@@ -150,9 +150,9 @@
 
     .hero-inner {
       display: grid;
-      grid-template-columns: 1fr 260px;
-      gap: 5rem;
-      align-items: center;
+      grid-template-columns: 1fr 200px;
+      gap: 3.5rem;
+      align-items: start;
     }
 
     .hero-name {
@@ -204,11 +204,12 @@
 
     .hero-photo img {
       width: 100%;
-      aspect-ratio: 3 / 4;
+      aspect-ratio: 4 / 5;
       object-fit: cover;
-      object-position: center center;
-      border-radius: 3px;
+      object-position: center 12%;
+      border-radius: 4px;
       display: block;
+      filter: grayscale(8%) contrast(1.02);
     }
 
     /* ── SECTIONS ── */
@@ -397,6 +398,38 @@
       color: var(--subtle);
     }
 
+    /* ── ENTRANCE ANIMATION ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-content > * {
+      animation: fadeUp 0.55s ease both;
+    }
+    .hero-content > :nth-child(1) { animation-delay: 0.05s; }
+    .hero-content > :nth-child(2) { animation-delay: 0.15s; }
+    .hero-content > :nth-child(3) { animation-delay: 0.22s; }
+    .hero-content > :nth-child(4) { animation-delay: 0.30s; }
+
+    .hero-photo {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      animation: fadeUp 0.65s 0.1s ease both;
+    }
+
+    /* ── SCROLL REVEAL ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(14px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
     /* ── FOCUS & A11Y ── */
     a:focus-visible,
     button:focus-visible {
@@ -406,8 +439,12 @@
     }
 
     @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after { transition-duration: 0.01ms !important; }
+      *, *::before, *::after {
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+      }
       html { scroll-behavior: auto; }
+      .reveal { opacity: 1; transform: none; }
     }
 
     /* ── RESPONSIVE ── */
@@ -426,13 +463,15 @@
 
       .hero-photo {
         order: -1;
+        position: static;
         display: flex;
         justify-content: flex-start;
       }
 
       .hero-photo img {
-        width: 140px;
-        border-radius: 3px;
+        width: 120px;
+        border-radius: 50%;
+        aspect-ratio: 1 / 1;
       }
 
       .wrap { padding: 0 1.25rem; }
@@ -465,7 +504,7 @@
         <li><a href="#educacion" data-i18n="nav.education">Educación</a></li>
         <li><a href="#contacto" data-i18n="nav.contact">Contacto</a></li>
       </ul>
-      <button id="lang-toggle" aria-label="Switch to English">EN</button>
+      <button id="lang-toggle" type="button" aria-label="Switch to English">EN</button>
     </nav>
   </header>
 
@@ -494,7 +533,7 @@
       </div>
     </section>
 
-    <section id="sobre" aria-labelledby="sobre-heading">
+    <section id="sobre" aria-labelledby="sobre-heading" class="reveal">
       <div class="wrap">
         <p class="section-heading" id="sobre-heading" data-i18n="nav.about">Sobre mí</p>
         <p class="section-text" data-i18n="about.p1">Estudio Negocios y Tecnología en el ITBA. Me entusiasma pensar proyectos, armar cosas desde cero y llevarlas a la acción. Me gusta trabajar en equipo, liderar con propósito y generar impacto real.</p>
@@ -502,7 +541,7 @@
       </div>
     </section>
 
-    <section id="experiencia" aria-labelledby="experiencia-heading">
+    <section id="experiencia" aria-labelledby="experiencia-heading" class="reveal">
       <div class="wrap">
         <p class="section-heading" id="experiencia-heading" data-i18n="nav.experience">Experiencia</p>
 
@@ -575,7 +614,7 @@
       </div>
     </section>
 
-    <section id="educacion" aria-labelledby="educacion-heading">
+    <section id="educacion" aria-labelledby="educacion-heading" class="reveal">
       <div class="wrap">
         <p class="section-heading" id="educacion-heading" data-i18n="nav.education">Educación</p>
 
@@ -612,7 +651,7 @@
       </div>
     </section>
 
-    <section id="intereses" aria-labelledby="intereses-heading">
+    <section id="intereses" aria-labelledby="intereses-heading" class="reveal">
       <div class="wrap">
         <p class="section-heading" id="intereses-heading" data-i18n="nav.interests">Más sobre mí</p>
         <div class="interests-grid">
@@ -628,7 +667,7 @@
       </div>
     </section>
 
-    <section id="contacto" aria-labelledby="contacto-heading">
+    <section id="contacto" aria-labelledby="contacto-heading" class="reveal">
       <div class="wrap">
         <p class="section-heading" id="contacto-heading" data-i18n="nav.contact">Contacto</p>
         <p class="section-text" data-i18n="contact.text">Si querés conectar, colaborar en algo o simplemente charlar sobre tecnología, negocios y comunidad, estoy disponible.</p>

@@ -1,16 +1,16 @@
 // ── Email obfuscation ──
 (function () {
-  const u = 'falkoneitan';
-  const d = 'gmail.com';
-  const href = 'mailto:' + u + '@' + d;
+  var u = 'falkoneitan';
+  var d = 'gmail.com';
+  var href = 'mailto:' + u + '@' + d;
   ['email-btn', 'email-btn-2'].forEach(function (id) {
-    const el = document.getElementById(id);
+    var el = document.getElementById(id);
     if (el) el.href = href;
   });
 })();
 
 // ── Translations ──
-const translations = {
+var translations = {
   es: {
     'nav.about':       'Sobre mí',
     'nav.experience':  'Experiencia',
@@ -54,14 +54,14 @@ const translations = {
     'nav.contact':     'Contact',
     'nav.interests':   'More about me',
     'hero.subtitle':   'Business & Technology · ITBA',
-    'about.p1':        'I study Business and Technology at ITBA. I\'m passionate about thinking through projects, building things from scratch, and making them happen. I enjoy working in teams, leading with purpose, and creating real impact.',
-    'about.p2':        'I come from a youth leadership background, where I discovered how much I enjoy connecting with others, organizing, and getting things done. I\'m interested in the intersection of technology, social impact, and management.',
+    'about.p1':        "I study Business and Technology at ITBA. I'm passionate about thinking through projects, building things from scratch, and making them happen. I enjoy working in teams, leading with purpose, and creating real impact.",
+    'about.p2':        "I come from a youth leadership background, where I discovered how much I enjoy connecting with others, organizing, and getting things done. I'm interested in the intersection of technology, social impact, and management.",
     'exp.auja.title':  'Chair — AUJA',
     'exp.auja.date':   '2025 – present',
     'exp.auja.desc':   'I represent AUJA at ITBA. The organization works to fight antisemitism in universities and create spaces for interfaith dialogue.',
     'exp.bnei.title':  'Coordinator & Trainer — Bnei Akiva',
     'exp.bnei.date':   '2020 – 2024',
-    'exp.bnei.desc':   'I started as a madrich — a mentor and group leader for children and teenagers. Over time I moved on to coordinating teams and teaching the formal Bnei Akiva Argentina leadership training course, working on leadership, relationships, and group responsibility.',
+    'exp.bnei.desc':   "I started as a madrich — a mentor and group leader for children and teenagers. Over time I moved on to coordinating teams and teaching the formal Bnei Akiva Argentina leadership training course, working on leadership, relationships, and group responsibility.",
     'exp.diller.title':'Junior Counselor — Diller Teen Fellows',
     'exp.diller.date': '2022 – 2023',
     'exp.diller.desc': 'International Jewish leadership program focused on strengthening ties between diaspora communities and Israel. I participated in local and international gatherings, exchanging ideas and approaches to leadership with young people from around the world.',
@@ -78,10 +78,10 @@ const translations = {
     'edu.wolfsohn.degree':'International Baccalaureate · Business Management · Bilingual English Diploma',
     'edu.diller.detail':  'Buenos Aires Cohort',
     'interests.piano.name': 'Piano',
-    'interests.piano.desc': 'I\'ve been playing piano since I was a kid. Classical music is a form of concentration I found away from screens.',
+    'interests.piano.desc': "I've been playing piano since I was a kid. Classical music is a form of concentration I found away from screens.",
     'interests.scuba.name': 'Scuba diving',
     'interests.scuba.desc': 'I got my PADI Open Water certification in 2024. Another way to explore — this time, underwater.',
-    'contact.text':    'If you\'d like to connect, collaborate on something, or simply chat about technology, business, and community, I\'m available.',
+    'contact.text':    "If you'd like to connect, collaborate on something, or simply chat about technology, business, and community, I'm available.",
   }
 };
 
@@ -93,18 +93,40 @@ function setLang(lang) {
   document.documentElement.lang = lang;
 
   var toggle = document.getElementById('lang-toggle');
+  if (!toggle) return;
   toggle.textContent = lang === 'es' ? 'EN' : 'ES';
   toggle.setAttribute('aria-label', lang === 'es' ? 'Switch to English' : 'Cambiar a español');
 
   var t = translations[lang];
   document.querySelectorAll('[data-i18n]').forEach(function (el) {
     var key = el.getAttribute('data-i18n');
-    if (t[key] !== undefined) {
-      el.textContent = t[key];
-    }
+    if (t[key] !== undefined) el.textContent = t[key];
   });
 }
 
-document.getElementById('lang-toggle').addEventListener('click', function () {
-  setLang(currentLang === 'es' ? 'en' : 'es');
-});
+var langToggle = document.getElementById('lang-toggle');
+if (langToggle) {
+  langToggle.addEventListener('click', function () {
+    setLang(currentLang === 'es' ? 'en' : 'es');
+  });
+}
+
+// ── Scroll reveal ──
+if ('IntersectionObserver' in window) {
+  var revealObserver = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08 });
+
+  document.querySelectorAll('.reveal').forEach(function (el) {
+    revealObserver.observe(el);
+  });
+} else {
+  document.querySelectorAll('.reveal').forEach(function (el) {
+    el.classList.add('visible');
+  });
+}
