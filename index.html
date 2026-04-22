@@ -10,8 +10,10 @@
   <meta property="og:description" content="Estudiante de Negocios y Tecnología · ITBA · Buenos Aires">
   <meta property="og:url" content="https://eitanfalkon.com.ar">
   <meta property="og:type" content="website">
+  <meta property="og:image" content="https://eitanfalkon.com.ar/foto.jpg">
   <link rel="canonical" href="https://eitanfalkon.com.ar">
   <link rel="sitemap" type="application/xml" href="/sitemap.xml">
+
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -19,81 +21,86 @@
     "name": "Eitan Falkon",
     "url": "https://eitanfalkon.com.ar",
     "email": "falkoneitan@gmail.com",
+    "image": "https://eitanfalkon.com.ar/foto.jpg",
     "jobTitle": "Estudiante de Licenciatura en Negocios y Tecnología",
     "affiliation": {
       "@type": "CollegeOrUniversity",
       "name": "Instituto Tecnológico de Buenos Aires",
       "alternateName": "ITBA"
     },
-    "alumniOf": [
-      {
-        "@type": "CollegeOrUniversity",
-        "name": "Instituto Tecnológico de Buenos Aires",
-        "alternateName": "ITBA"
-      },
-      {
-        "@type": "HighSchool",
-        "name": "Colegio Secundario Wolfsohn"
-      }
-    ],
+    "alumniOf": {
+      "@type": "HighSchool",
+      "name": "Colegio Secundario David Wolfsohn"
+    },
     "address": {
       "@type": "PostalAddress",
       "addressLocality": "Buenos Aires",
       "addressCountry": "AR"
     },
-    "sameAs": [
-      "https://www.linkedin.com/in/eitanfalkon/"
-    ],
-    "knowsAbout": ["Negocios", "Tecnología", "Liderazgo", "Comunidad"]
+    "sameAs": ["https://www.linkedin.com/in/eitanfalkon/"],
+    "knowsAbout": ["Negocios", "Tecnología", "Liderazgo", "Comunidad"],
+    "knowsLanguage": ["es", "en", "he"]
   }
   </script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+
   <style>
     :root {
-      --bg: #fafafa;
-      --text: #0a0a0a;
-      --muted: #555;
-      --subtle: #999;
-      --border: #d8d8d8;
-      --max-w: 680px;
+      --bg:          #FAFAF8;
+      --text:        #100F0F;
+      --muted:       #525250;
+      --subtle:      #9A9A96;
+      --border:      #E4E0D8;
+      --accent:      #1E3A5F;
+      --hero-w:      860px;
+      --text-w:      660px;
     }
 
-    *, *::before, *::after {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
     html { scroll-behavior: smooth; }
 
     body {
-      font-family: 'EB Garamond', Georgia, 'Times New Roman', serif;
+      font-family: 'EB Garamond', Georgia, serif;
       background: var(--bg);
       color: var(--text);
-      line-height: 1.7;
+      line-height: 1.75;
       font-size: 18px;
       -webkit-font-smoothing: antialiased;
     }
 
-    /* ── NAV ── */
-    nav {
-      padding: 2rem;
-      max-width: var(--max-w);
-      margin: 0 auto;
-      display: flex;
-      align-items: baseline;
-      justify-content: space-between;
+    /* ── NAV HEADER ── */
+    .nav-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(250, 250, 248, 0.94);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
       border-bottom: 1px solid var(--border);
     }
 
+    nav {
+      max-width: var(--hero-w);
+      margin: 0 auto;
+      padding: 1.5rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+    }
+
     .nav-logo {
-      font-size: 1rem;
+      font-family: 'EB Garamond', serif;
+      font-size: 1.05rem;
       font-weight: 500;
       color: var(--text);
       text-decoration: none;
       letter-spacing: 0.01em;
+      flex-shrink: 0;
     }
 
     .nav-links {
@@ -103,140 +110,205 @@
     }
 
     .nav-links a {
-      font-size: 0.9rem;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 400;
       color: var(--muted);
       text-decoration: none;
+      letter-spacing: 0.01em;
+      transition: color 200ms;
     }
 
-    .nav-links a:hover {
-      color: var(--text);
+    .nav-links a:hover { color: var(--accent); }
+
+    #lang-toggle {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+      background: transparent;
+      border: 1px solid currentColor;
+      border-radius: 3px;
+      padding: 0.22rem 0.6rem;
+      cursor: pointer;
+      transition: background 200ms, color 200ms;
+      flex-shrink: 0;
     }
 
-    /* ── WRAPPER ── */
-    .wrap {
-      max-width: var(--max-w);
-      margin: 0 auto;
-      padding: 0 2rem;
+    #lang-toggle:hover {
+      background: var(--accent);
+      color: var(--bg);
     }
 
     /* ── HERO ── */
     #hero {
-      padding: 5rem 2rem 4rem;
-      max-width: var(--max-w);
+      max-width: var(--hero-w);
       margin: 0 auto;
+      padding: 5.5rem 2rem 5rem;
+    }
+
+    .hero-inner {
+      display: grid;
+      grid-template-columns: 1fr 260px;
+      gap: 5rem;
+      align-items: center;
     }
 
     .hero-name {
-      font-size: clamp(2.6rem, 8vw, 4rem);
+      font-size: clamp(2.9rem, 6.5vw, 4.4rem);
       font-weight: 500;
-      letter-spacing: -0.02em;
-      line-height: 1.1;
-      margin-bottom: 1rem;
+      letter-spacing: -0.025em;
+      line-height: 1.05;
+      margin-bottom: 1.5rem;
+      color: var(--text);
     }
 
-    .hero-tagline {
-      font-size: 1.15rem;
+    .hero-subtitle {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 400;
       color: var(--muted);
-      font-style: italic;
-      margin-bottom: 0.5rem;
+      letter-spacing: 0.01em;
+      margin-bottom: 0.3rem;
     }
 
     .hero-location {
-      font-size: 0.9rem;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.82rem;
       color: var(--subtle);
-      margin-bottom: 2rem;
+      margin-bottom: 2.5rem;
     }
 
     .hero-links {
       display: flex;
-      gap: 1.5rem;
+      gap: 1.75rem;
       flex-wrap: wrap;
     }
 
     .hero-links a {
-      font-size: 0.95rem;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.88rem;
       color: var(--text);
       text-decoration: underline;
-      text-underline-offset: 3px;
+      text-underline-offset: 4px;
+      text-decoration-color: var(--border);
+      transition: color 200ms, text-decoration-color 200ms;
+      cursor: pointer;
     }
 
     .hero-links a:hover {
-      color: var(--muted);
+      color: var(--accent);
+      text-decoration-color: var(--accent);
+    }
+
+    .hero-photo img {
+      width: 100%;
+      aspect-ratio: 3 / 4;
+      object-fit: cover;
+      object-position: center center;
+      border-radius: 3px;
+      display: block;
     }
 
     /* ── SECTIONS ── */
-    section {
-      padding: 3.5rem 2rem;
-      max-width: var(--max-w);
-      margin: 0 auto;
+    main > section {
       border-top: 1px solid var(--border);
+      padding: 4rem 0;
+    }
+
+    .wrap {
+      max-width: var(--text-w);
+      margin: 0 auto;
+      padding: 0 2rem;
     }
 
     .section-heading {
-      font-size: 0.8rem;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.7rem;
       font-weight: 500;
-      letter-spacing: 0.12em;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: var(--subtle);
-      margin-bottom: 1.75rem;
+      color: var(--accent);
+      margin-bottom: 2rem;
     }
 
     .section-text {
       font-size: 1.05rem;
       color: var(--text);
-      line-height: 1.8;
+      line-height: 1.85;
       max-width: 560px;
     }
 
     /* ── EXPERIENCE ── */
     .exp-item {
-      margin-bottom: 2.25rem;
+      padding: 1.75rem 0 1.75rem 1rem;
+      margin-left: -1rem;
+      border-left: 2px solid transparent;
+      transition: border-color 250ms;
     }
 
-    .exp-item:last-child {
-      margin-bottom: 0;
+    .exp-item:not(:last-child) {
+      border-bottom: 1px solid var(--border);
+    }
+
+    .exp-item:hover {
+      border-left-color: var(--accent);
     }
 
     .exp-header {
       display: flex;
       justify-content: space-between;
-      align-items: baseline;
-      flex-wrap: wrap;
-      gap: 0.25rem;
-      margin-bottom: 0.1rem;
+      align-items: flex-start;
+      gap: 1.5rem;
+      margin-bottom: 0.15rem;
     }
 
     .exp-title {
       font-size: 1rem;
       font-weight: 600;
       color: var(--text);
-    }
-
-    .exp-date {
-      font-size: 0.85rem;
-      color: var(--subtle);
-      font-style: italic;
+      display: block;
     }
 
     .exp-org {
-      font-size: 0.9rem;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.8rem;
       color: var(--muted);
-      margin-bottom: 0.5rem;
+      margin-top: 0.15rem;
+    }
+
+    .exp-date {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.78rem;
+      color: var(--subtle);
+      white-space: nowrap;
+      flex-shrink: 0;
+      padding-top: 0.2rem;
     }
 
     .exp-desc {
       font-size: 0.95rem;
       color: var(--muted);
-      line-height: 1.75;
+      line-height: 1.8;
+      margin-top: 0.65rem;
+      max-width: 520px;
     }
 
     /* ── EDUCATION ── */
     .edu-item {
-      margin-bottom: 2rem;
+      padding: 1.5rem 0;
     }
 
-    .edu-item:last-child {
-      margin-bottom: 0;
+    .edu-item:not(:last-child) {
+      border-bottom: 1px solid var(--border);
+    }
+
+    .edu-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 1.5rem;
     }
 
     .edu-title {
@@ -246,187 +318,334 @@
     }
 
     .edu-detail {
-      font-size: 0.9rem;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.8rem;
       color: var(--muted);
-      font-style: italic;
+      margin-top: 0.2rem;
     }
 
     .edu-year {
-      font-size: 0.85rem;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.78rem;
       color: var(--subtle);
+      white-space: nowrap;
+      flex-shrink: 0;
+      padding-top: 0.2rem;
+    }
+
+    /* ── INTERESTS ── */
+    .interests-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem 4rem;
+    }
+
+    .interest-name {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 0.4rem;
+    }
+
+    .interest-desc {
+      font-size: 0.95rem;
+      color: var(--muted);
+      line-height: 1.8;
     }
 
     /* ── CONTACT ── */
     .contact-links {
       display: flex;
       flex-direction: column;
-      gap: 0.6rem;
-      margin-top: 0.5rem;
+      gap: 0.5rem;
+      margin-top: 1.5rem;
     }
 
     .contact-links a {
-      font-size: 1rem;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.92rem;
       color: var(--text);
       text-decoration: underline;
-      text-underline-offset: 3px;
+      text-underline-offset: 4px;
+      text-decoration-color: var(--border);
+      transition: color 200ms, text-decoration-color 200ms;
+      cursor: pointer;
     }
 
     .contact-links a:hover {
-      color: var(--muted);
+      color: var(--accent);
+      text-decoration-color: var(--accent);
     }
 
     /* ── FOOTER ── */
     footer {
       border-top: 1px solid var(--border);
-      padding: 1.5rem 2rem;
-      max-width: var(--max-w);
+      padding: 1.75rem 2rem;
+    }
+
+    .footer-inner {
+      max-width: var(--hero-w);
       margin: 0 auto;
-      font-size: 0.8rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    footer p {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.76rem;
       color: var(--subtle);
     }
 
-    /* ── RESPONSIVE ── */
-    @media (max-width: 540px) {
-      body { font-size: 17px; }
-      nav { padding: 1.5rem 1.25rem; }
-      .nav-links { gap: 1rem; }
-      #hero { padding: 3.5rem 1.25rem 3rem; }
-      section { padding: 3rem 1.25rem; }
-      footer { padding: 1.5rem 1.25rem; }
-      .exp-header { flex-direction: column; }
+    /* ── FOCUS & A11Y ── */
+    a:focus-visible,
+    button:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+      border-radius: 2px;
     }
 
-    @media (max-width: 380px) {
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { transition-duration: 0.01ms !important; }
+      html { scroll-behavior: auto; }
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 700px) {
+      body { font-size: 17px; }
+
+      nav { padding: 1.25rem 1.25rem; }
       .nav-links { display: none; }
+
+      #hero { padding: 3.5rem 1.25rem 3.5rem; }
+
+      .hero-inner {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+      }
+
+      .hero-photo {
+        order: -1;
+        display: flex;
+        justify-content: flex-start;
+      }
+
+      .hero-photo img {
+        width: 140px;
+        border-radius: 3px;
+      }
+
+      .wrap { padding: 0 1.25rem; }
+
+      main > section { padding: 3rem 0; }
+
+      .exp-item { padding: 1.5rem 0 1.5rem 0.75rem; margin-left: -0.75rem; }
+      .exp-header { flex-direction: column; gap: 0.1rem; }
+      .edu-header { flex-direction: column; gap: 0.1rem; }
+
+      .interests-grid { grid-template-columns: 1fr; gap: 1.75rem; }
+
+      footer { padding: 1.5rem 1.25rem; }
+      .footer-inner { flex-direction: column; gap: 0.2rem; }
+    }
+
+    @media (max-width: 420px) {
+      .hero-name { font-size: 2.6rem; }
     }
   </style>
 </head>
 <body>
 
-  <nav role="navigation" aria-label="Navegación principal">
-    <a href="#hero" class="nav-logo">Eitan Falkon</a>
-    <ul class="nav-links">
-      <li><a href="#about">Sobre mí</a></li>
-      <li><a href="#experience">Experiencia</a></li>
-      <li><a href="#education">Educación</a></li>
-      <li><a href="#contact">Contacto</a></li>
-    </ul>
-  </nav>
+  <header class="nav-header">
+    <nav role="navigation" aria-label="Navegación principal">
+      <a href="#hero" class="nav-logo">Eitan Falkon</a>
+      <ul class="nav-links">
+        <li><a href="#sobre" data-i18n="nav.about">Sobre mí</a></li>
+        <li><a href="#experiencia" data-i18n="nav.experience">Experiencia</a></li>
+        <li><a href="#educacion" data-i18n="nav.education">Educación</a></li>
+        <li><a href="#contacto" data-i18n="nav.contact">Contacto</a></li>
+      </ul>
+      <button id="lang-toggle" aria-label="Switch to English">EN</button>
+    </nav>
+  </header>
 
-  <section id="hero" style="border-top: none; padding-top: 5rem; padding-bottom: 4rem;">
-    <h1 class="hero-name">Eitan Falkon</h1>
-    <p class="hero-tagline">Negocios, tecnología y comunidad.</p>
-    <p class="hero-location">Buenos Aires, Argentina</p>
-    <div class="hero-links">
-      <a href="https://www.linkedin.com/in/eitanfalkon/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-      <a href="#" id="email-btn">falkoneitan@gmail.com</a>
-    </div>
-  </section>
+  <main>
 
-  <section id="about" aria-labelledby="about-heading">
-    <p class="section-heading" id="about-heading">Sobre mí</p>
-    <p class="section-text">
-      Estudio Negocios y Tecnología en el ITBA. Me entusiasma pensar proyectos, armar cosas desde cero y llevarlas a la acción.
-      Vengo del mundo del liderazgo juvenil, donde descubrí lo mucho que disfruto conectar con otros, organizar y hacer que las cosas sucedan.
-      Me interesa la intersección entre tecnología, impacto social y gestión.
-    </p>
-  </section>
-
-  <section id="experience" aria-labelledby="experience-heading">
-    <p class="section-heading" id="experience-heading">Experiencia</p>
-
-    <div class="exp-item">
-      <div class="exp-header">
-        <span class="exp-title">Chair — AUJA</span>
-        <span class="exp-date">2025 – actualidad</span>
+    <section id="hero" style="border-top: none;">
+      <div class="hero-inner">
+        <div class="hero-content">
+          <h1 class="hero-name">Eitan Falkon</h1>
+          <p class="hero-subtitle" data-i18n="hero.subtitle">Negocios y Tecnología · ITBA</p>
+          <p class="hero-location">Buenos Aires, Argentina</p>
+          <div class="hero-links">
+            <a href="https://www.linkedin.com/in/eitanfalkon/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            <a href="#" id="email-btn">falkoneitan@gmail.com</a>
+          </div>
+        </div>
+        <div class="hero-photo">
+          <img
+            src="foto.jpg"
+            alt="Eitan Falkon"
+            width="600"
+            height="800"
+            loading="eager"
+          >
+        </div>
       </div>
-      <p class="exp-org">Asociación de Universitarios Judíos Argentinos</p>
-      <p class="exp-desc">Representando a AUJA ante el ITBA. La organización trabaja para combatir el antisemitismo en las universidades y crear espacios de diálogo interreligioso.</p>
-    </div>
+    </section>
 
-    <div class="exp-item">
-      <div class="exp-header">
-        <span class="exp-title">Coordinador y Capacitador — Bnei Akiva</span>
-        <span class="exp-date">2022 – 2024</span>
+    <section id="sobre" aria-labelledby="sobre-heading">
+      <div class="wrap">
+        <p class="section-heading" id="sobre-heading" data-i18n="nav.about">Sobre mí</p>
+        <p class="section-text" data-i18n="about.p1">Estudio Negocios y Tecnología en el ITBA. Me entusiasma pensar proyectos, armar cosas desde cero y llevarlas a la acción. Me gusta trabajar en equipo, liderar con propósito y generar impacto real.</p>
+        <p class="section-text" style="margin-top: 1.1rem;" data-i18n="about.p2">Vengo del mundo del liderazgo juvenil, donde descubrí lo mucho que disfruto conectar con otros, organizar y hacer que las cosas sucedan. Me interesa la intersección entre tecnología, impacto social y gestión.</p>
       </div>
-      <p class="exp-org">Tnuá Bnei Akiva</p>
-      <p class="exp-desc">Referente y líder de grupos, generador de espacios con sentido para chicos y adolescentes. Coordiné equipos y formé nuevos madrijim trabajando sobre liderazgo, vínculos y responsabilidad grupal.</p>
-    </div>
+    </section>
 
-    <div class="exp-item">
-      <div class="exp-header">
-        <span class="exp-title">Junior Counselor — Diller Teen Fellows</span>
-        <span class="exp-date">2022 – 2023</span>
+    <section id="experiencia" aria-labelledby="experiencia-heading">
+      <div class="wrap">
+        <p class="section-heading" id="experiencia-heading" data-i18n="nav.experience">Experiencia</p>
+
+        <div class="exp-item">
+          <div class="exp-header">
+            <div>
+              <span class="exp-title" data-i18n="exp.auja.title">Chair — AUJA</span>
+              <p class="exp-org">Asociación de Universitarios Judíos Argentinos</p>
+            </div>
+            <span class="exp-date" data-i18n="exp.auja.date">2025 – actualidad</span>
+          </div>
+          <p class="exp-desc" data-i18n="exp.auja.desc">Represento a AUJA ante el ITBA. La organización trabaja para combatir el antisemitismo en las universidades y crear espacios de diálogo interreligioso.</p>
+        </div>
+
+        <div class="exp-item">
+          <div class="exp-header">
+            <div>
+              <span class="exp-title" data-i18n="exp.bnei.title">Coordinador y Capacitador — Bnei Akiva</span>
+              <p class="exp-org">Tnuá Bnei Akiva</p>
+            </div>
+            <span class="exp-date" data-i18n="exp.bnei.date">2020 – 2024</span>
+          </div>
+          <p class="exp-desc" data-i18n="exp.bnei.desc">Comencé como madrij, referente y líder de grupos de chicos y adolescentes. Con el tiempo pasé a coordinar equipos y a dictar el curso formal de formación de madrijim de Bnei Akiva Argentina, trabajando sobre liderazgo, vínculos y responsabilidad grupal.</p>
+        </div>
+
+        <div class="exp-item">
+          <div class="exp-header">
+            <div>
+              <span class="exp-title" data-i18n="exp.diller.title">Junior Counselor — Diller Teen Fellows</span>
+              <p class="exp-org">Diller Teen Fellows Program</p>
+            </div>
+            <span class="exp-date" data-i18n="exp.diller.date">2022 – 2023</span>
+          </div>
+          <p class="exp-desc" data-i18n="exp.diller.desc">Programa internacional de liderazgo judío enfocado en el vínculo entre comunidades de la diáspora e Israel. Participé en encuentros locales e internacionales, intercambiando ideas y formas de liderazgo con jóvenes de distintas partes del mundo.</p>
+        </div>
+
+        <div class="exp-item">
+          <div class="exp-header">
+            <div>
+              <span class="exp-title" data-i18n="exp.jya.title">Delegado — Jewish Youth Assembly</span>
+              <p class="exp-org">World Jewish Congress</p>
+            </div>
+            <span class="exp-date">2023</span>
+          </div>
+          <p class="exp-desc" data-i18n="exp.jya.desc">Asamblea internacional de jóvenes judíos organizada por el Congreso Judío Mundial. Participé como delegado representando a Argentina.</p>
+        </div>
+
+        <div class="exp-item">
+          <div class="exp-header">
+            <div>
+              <span class="exp-title" data-i18n="exp.sabf.title">Participante — South American Business Forum</span>
+              <p class="exp-org">SABF</p>
+            </div>
+            <span class="exp-date">2025</span>
+          </div>
+          <p class="exp-desc" data-i18n="exp.sabf.desc">Foro estudiantil de negocios y liderazgo con referentes del mundo empresarial y académico de América del Sur.</p>
+        </div>
+
+        <div class="exp-item">
+          <div class="exp-header">
+            <div>
+              <span class="exp-title" data-i18n="exp.camondo.title">Participante — Camondo World Wide Retreat</span>
+              <p class="exp-org" data-i18n="exp.camondo.org">Programa internacional</p>
+            </div>
+            <span class="exp-date">2025</span>
+          </div>
+          <p class="exp-desc" data-i18n="exp.camondo.desc">Retiro internacional de jóvenes líderes con foco en identidad, comunidad e impacto global.</p>
+        </div>
+
       </div>
-      <p class="exp-org">Diller Teen Fellows Program</p>
-      <p class="exp-desc">Programa internacional de liderazgo judío que trabaja el vínculo entre comunidades de la diáspora e Israel. Participé en encuentros locales e internacionales, intercambiando ideas y formas de liderazgo con jóvenes de distintas partes del mundo.</p>
-    </div>
+    </section>
 
-    <div class="exp-item">
-      <div class="exp-header">
-        <span class="exp-title">Participante — South American Business Forum</span>
-        <span class="exp-date">2025</span>
+    <section id="educacion" aria-labelledby="educacion-heading">
+      <div class="wrap">
+        <p class="section-heading" id="educacion-heading" data-i18n="nav.education">Educación</p>
+
+        <div class="edu-item">
+          <div class="edu-header">
+            <div>
+              <p class="edu-title">Instituto Tecnológico de Buenos Aires</p>
+              <p class="edu-detail" data-i18n="edu.itba.degree">Licenciatura en Negocios y Tecnología</p>
+            </div>
+            <span class="edu-year" data-i18n="edu.itba.year">2024 – actualidad</span>
+          </div>
+        </div>
+
+        <div class="edu-item">
+          <div class="edu-header">
+            <div>
+              <p class="edu-title" data-i18n="edu.wolfsohn.name">Colegio Secundario David Wolfsohn</p>
+              <p class="edu-detail" data-i18n="edu.wolfsohn.degree">Bachillerato Internacional · Business Management · Diploma bilingüe en inglés</p>
+            </div>
+            <span class="edu-year">2018 – 2022</span>
+          </div>
+        </div>
+
+        <div class="edu-item">
+          <div class="edu-header">
+            <div>
+              <p class="edu-title">Diller Teen Fellows Alumni</p>
+              <p class="edu-detail" data-i18n="edu.diller.detail">Buenos Aires Cohort</p>
+            </div>
+            <span class="edu-year">2021 – 2022</span>
+          </div>
+        </div>
+
       </div>
-      <p class="exp-org">SABF</p>
-      <p class="exp-desc">Foro estudiantil de negocios y liderazgo con referentes del mundo empresarial y académico de América del Sur.</p>
-    </div>
+    </section>
 
-    <div class="exp-item">
-      <div class="exp-header">
-        <span class="exp-title">Delegado — Jewish Youth Assembly</span>
-        <span class="exp-date">2023</span>
+    <section id="intereses" aria-labelledby="intereses-heading">
+      <div class="wrap">
+        <p class="section-heading" id="intereses-heading" data-i18n="nav.interests">Más sobre mí</p>
+        <div class="interests-grid">
+          <div class="interest-item">
+            <p class="interest-name" data-i18n="interests.piano.name">Piano</p>
+            <p class="interest-desc" data-i18n="interests.piano.desc">Toco el piano desde chico. La música clásica es una forma de concentración que encontré lejos de las pantallas.</p>
+          </div>
+          <div class="interest-item">
+            <p class="interest-name" data-i18n="interests.scuba.name">Buceo</p>
+            <p class="interest-desc" data-i18n="interests.scuba.desc">Certifiqué como PADI Open Water Diver en 2024. Otra forma de explorar — esta vez, abajo del agua.</p>
+          </div>
+        </div>
       </div>
-      <p class="exp-org">World Jewish Congress</p>
-      <p class="exp-desc">Asamblea internacional de jóvenes judíos organizada por el Congreso Judío Mundial. Participé como delegado representando a Argentina.</p>
-    </div>
+    </section>
 
-    <div class="exp-item">
-      <div class="exp-header">
-        <span class="exp-title">Participante — Camondo World Wide Retreat</span>
-        <span class="exp-date">2025</span>
+    <section id="contacto" aria-labelledby="contacto-heading">
+      <div class="wrap">
+        <p class="section-heading" id="contacto-heading" data-i18n="nav.contact">Contacto</p>
+        <p class="section-text" data-i18n="contact.text">Si querés conectar, colaborar en algo o simplemente charlar sobre tecnología, negocios y comunidad, estoy disponible.</p>
+        <div class="contact-links">
+          <a href="https://www.linkedin.com/in/eitanfalkon/" target="_blank" rel="noopener noreferrer">linkedin.com/in/eitanfalkon</a>
+          <a href="#" id="email-btn-2">falkoneitan@gmail.com</a>
+        </div>
       </div>
-      <p class="exp-org">Programa internacional</p>
-      <p class="exp-desc">Retiro internacional de jóvenes líderes con foco en identidad, comunidad e impacto global.</p>
-    </div>
+    </section>
 
-  </section>
-
-  <section id="education" aria-labelledby="education-heading">
-    <p class="section-heading" id="education-heading">Educación</p>
-
-    <div class="edu-item">
-      <p class="edu-title">Instituto Tecnológico de Buenos Aires</p>
-      <p class="edu-detail">Licenciatura en Negocios y Tecnología</p>
-      <p class="edu-year">2025 – actualidad</p>
-    </div>
-
-    <div class="edu-item">
-      <p class="edu-title">Colegio Secundario Wolfsohn</p>
-      <p class="edu-detail">Bachillerato Internacional (IB)</p>
-      <p class="edu-year">2018 – 2022</p>
-    </div>
-
-    <div class="edu-item">
-      <p class="edu-title">Diller Teen Fellows Alumni</p>
-      <p class="edu-detail">Buenos Aires Cohort</p>
-      <p class="edu-year">2021 – 2022</p>
-    </div>
-
-  </section>
-
-  <section id="contact" aria-labelledby="contact-heading">
-    <p class="section-heading" id="contact-heading">Contacto</p>
-    <p class="section-text" style="margin-bottom: 1.5rem;">
-      Si querés conectar, colaborar en algo o simplemente charlar sobre tecnología, negocios y comunidad, estoy disponible.
-    </p>
-    <div class="contact-links">
-      <a href="https://www.linkedin.com/in/eitanfalkon/" target="_blank" rel="noopener noreferrer">linkedin.com/in/eitanfalkon</a>
-      <a href="#" id="email-btn-2">falkoneitan@gmail.com</a>
-    </div>
-  </section>
+  </main>
 
   <footer>
-    <p>&copy; 2026 Eitan Falkon &nbsp;·&nbsp; eitanfalkon.com.ar</p>
+    <div class="footer-inner">
+      <p>&copy; 2026 Eitan Falkon</p>
+      <p>eitanfalkon.com.ar</p>
+    </div>
   </footer>
 
   <script src="script.js"></script>
